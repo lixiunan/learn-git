@@ -88,7 +88,15 @@
      git push -u origin master(由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。)
    4.*只要本地作了提交，就可以通过命令
      git push origin master
-   
+十.从远程库克隆
+   1.首先，登陆GitHub，创建一个新的仓库，名字叫'gitskills'
+   2.勾选Initialize this repository with a README，这样GitHub会自动为我们创建一个README.md文件。创建完毕后，可以看到README.md文件
+   3.用命令git clone克隆一个本地库   git clone git@github.com:username/repositoryname.git
+   4.进入目录查看
+     cd gitskills
+     ls
+     
+  小结：Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。   
 
     
   
