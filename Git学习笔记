@@ -97,6 +97,53 @@
      ls
      
   小结：Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。   
+  
+十一.分支管理
+  <一> 创建与合并分支
+       1.git branch <branch-name>        创建分支
+       2.git checkout <branch-name>      切换分支
+       3.git checkout -b <branch-name>   创建+切换分支
+       4.git branch                      查看分支  （git branch命令会列出所有分支，当前分支前面会标一个*号。）
+       5.git merge <branch-name>         合并某分支到当前分支
+       6.git merge --no-ff -m "description" <branch-name>   普通模式合并分支 （通常进行分支合并时，如果可以，Git会使用Fast forward模式，删除分支后，分支历史信息会丢失  --no-ff表示禁用Fast forward模式，能看出曾做过合并）
+       7.git branch -d <branch-name>     删除分支
+       8.git branch -D <branch-name>     强行删除分支
+       9.git log --graph                 查看分支合并图
+       10.git log --graph --pretty=oneline --abbrev-commit   简洁查看
+       11.git status          查看冲突文件
+       
+  <二> 解决冲突    
+  <三> 分支管理策略
+  <四> Bug分支
+      1.git stash          保存工作现场（把当前工作现场“储藏”起来，等以后恢复现场后继续工作）
+      2.git stash list     查看保存的工作现场
+      3.git stash apply    恢复工作现场
+      4.git stash drop     删除工作现场
+      5.git stash pop      恢复并删除工作现场
+      
+  <五> Feature分支    
+  <六> 多人协作
+       1.git remote     查看远程库信息
+       2.git remote -v  详细查看远程库信息
+       3.git push origin <branch-name>    本地推送分支
+       4.git checkout -b <branch-name> origin/<branch-name>    在本地创建和远程分支对应的分支
+       5.git branch --set-upstream <branch-name> origin/<branch-name>  或  $ git branch --set-upstream-to=origin/<branch-name> <branch-name>  建立本地分支和远程分支的关联
+       6.git pull   从远程抓取分支
+       
+       多人协作的工作模式：
+       1.首先，可以试图用git push origin <branch-name>推送自己的修改；
+       2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+       3.如果合并有冲突，则解决冲突，并在本地提交；
+       4.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+       如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+ <七> Rebase“变基”
+      git rebase
+      rebase操作的特点：把分叉的提交历史“整理”成一条直线，看上去更直观。缺点是本地的分叉提交已经被修改过了。
+      只对尚未推送或尚未分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作
+
+  
+
 
     
   
